@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>React - Template</title>
+    <link rel="stylesheet" type="text/css" href="../../css/main.css">
     <script src="../../js/react.min.js"></script>
     <script src="../../js/react-dom.min.js"></script>
     <script src="../../js/browser.min.js"></script>
@@ -14,20 +15,37 @@
     
 
     <script type="text/babel">
-        var Emp = React.createClass({
-            render: function(){
-                return (<div>
-                        <h2>{this.props.name}</h2>
-                        <h2>{this.props.age}</h2>
-                       </div>);
-            }
-        });
-        ReactDOM.render(
-            <div>
+
+    var Comment = React.createClass({
+        edit: function(){
+            alert('Editing commnet');
+        },
+         remove: function(){
+            alert('Removing commnet');
+        },
         
-                < Emp name="Rakesh kumar" age="23" />
-                < Emp name="Mahesh kumar" age="24" />
-                < Emp name="Suresh kumar" age="25" />
+        
+        render: function(){
+            return(
+            <div className="commentContainer">
+        
+            <div className="commentText">{this.props.children}</div>
+            <button onClick={this.edit} className="button-primary">Edit</button>
+            <button onClick={this.remove} className="button-danger">Remove</button>
+                    
+            </div>
+                
+            );
+        }
+    });
+    
+        
+        ReactDOM.render(
+        <div className="board">
+                <Comment>Hey Now</Comment>
+                <Comment>Hey girl</Comment>
+                <Comment>Hey lady</Comment>
+                
         </div>,
             document.getElementById('container')
         );
