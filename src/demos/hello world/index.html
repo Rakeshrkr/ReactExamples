@@ -72,13 +72,36 @@
     });
     
         
-        ReactDOM.render(
-        <div className="board">
-                <Comment>Hey Now</Comment>
-                <Comment>Hey girl</Comment>
-                <Comment>Hey lady</Comment>
+    var Board = React.createClass({
+        
+        getInitialState: function(){
+            return {
+            comments:[
+                'Hi dude, whats up ?',
+                'Hi girl, How u doin ?',
+                'Cool che !!'
                 
-        </div>,
+            ]
+            }
+        },
+        
+        render: function(){
+            return (
+                <div className="board">
+                    {
+                this.state.comments.map(function(text,i){
+                    return (<Comment key={i}>{text}</Comment>)
+                })
+            }
+            
+                </div>
+        );
+        
+    }
+    }); 
+    
+        ReactDOM.render(
+        < Board />,
             document.getElementById('container')
         );
     </script>
